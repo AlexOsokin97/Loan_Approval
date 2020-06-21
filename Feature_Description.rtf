@@ -1,0 +1,248 @@
+{\rtf1\fbidis\ansi\ansicpg1255\deff0\nouicompat\deflang1037{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red192\green192\blue192;\red255\green0\blue0;\red255\green255\blue0;\red0\green77\blue187;\red0\green255\blue0;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\ltrpar\sa200\sl276\slmult1\highlight1\f0\fs22\lang9 AsOfDate\cf2  \cf0\highlight0 - \highlight3 String\cf4\highlight0  \cf0 - Not Nullable - \highlight5 As of Date\highlight0\par
+\par
+\highlight1 id \highlight0 - \highlight3 Integer \highlight0 - Not Nullable - \highlight5 A unique LC assigned ID for the loan listing.\highlight0\par
+\par
+\highlight1 memberId \highlight0 - \highlight3 Integer \highlight0 - Not Nullable - \highlight5 A unique LC assigned Id for the borrower member.\highlight0\par
+\par
+\highlight1 term \highlight0 - \highlight3 Integer \highlight0 - Not Nullable - \highlight5 The Number of payments on the loan. Values are in months \highlight0\tab\tab\tab\tab\highlight5 and can be either 36 or 60.\highlight0\par
+\par
+\highlight1 intRate \highlight0 - \highlight3 Number \highlight0 - Not Nullable - \highlight5 Interest Rate on the loan\highlight0\par
+\par
+\highlight1 expDefaultRate \highlight0 - \highlight3 Number \highlight0 - Not Nullable - \highlight5 The expected default rate of the loan.\highlight0\par
+\par
+\highlight1 serviceFeeRate \highlight0 - \highlight3 Number \highlight0 - Not Nullable - \highlight5 Service fee rate paid by the investor for this loan.\highlight0\par
+\par
+\highlight1 installment \highlight0 - \highlight3 Number \highlight0 - Not Nullable - \highlight5 The monthly payment owed by the borrower if the \highlight0\tab\tab\tab\tab  \tab\highlight5 loan originates.\par
+\highlight0\par
+\highlight1 grade \highlight0 -\highlight3 String \highlight0 - Not Nullable - \highlight5 Letter of Credit (LC) assigned loan grade\highlight0\par
+\par
+\highlight1 subGrade \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 Letter of Credit (LC) assigned loan subgrade\highlight0\par
+\par
+\highlight1 empLength \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Employment length in months. Possible values are whole \highlight0\tab\tab\tab\tab   \highlight5 numbers from 0 and higher. Null indicates not employed.\par
+\highlight0\par
+\highlight1 homeOwnership \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 The home ownership status provided by the borrower \highlight0\tab\tab\tab\tab          \highlight5 during registration or obtained from the credit report. \highlight0\tab\tab\tab\tab          \highlight5 Our values are: RENT, OWN, MORTGAGE, OTHER\highlight0\par
+\par
+\highlight1 annualInc \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 The annual income provided by the borrower during  \highlight0\tab\tab\tab\tab\tab   \highlight5 registration.\par
+\highlight0\par
+\highlight1 isIncV \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 Indicates if income is verified by Letter of Credit (LC)\highlight0\par
+\par
+\highlight1 acceptD \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 The date which the borrower accepted the offer\highlight0\par
+\par
+\highlight1 expD \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 The date the listing will expire\highlight0\par
+\par
+\highlight1 listD \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 The date which the borrower's application was listed on the \highlight0\tab\tab\tab           \highlight5 platform.\highlight0\par
+\par
+\highlight1 creditPullD \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 The date Letter of Credit (LC) pulled credit for this loan\highlight0\par
+\par
+\highlight1 reviewStatusD \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 The date the loan application was reviewed by Letter of  \highlight0\tab\tab\tab\tab       \highlight5 Credit (LC)\highlight0\par
+\par
+\highlight1 reviewStatus \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 The status of the loan during the listing period. Values: \highlight0\tab\tab\tab  \tab          \highlight5 APPROVED, NOT_APPROVED.\highlight0\par
+\par
+\highlight1 desc \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 Loan description provided by the borrower\highlight0\par
+\par
+\highlight1 purpose \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 A category provided by the borrower for the loan request. \highlight0\tab\tab\tab\tab  \highlight5 Values are: debt_consolidation, medical,\highlight0  \tab\tab\tab\tab\tab\tab  \highlight5 home_improvement, renewable_energy, small_business, \highlight0\tab\tab\tab\tab  \highlight5 wedding, vacation, moving, house, car, major_purchase,\highlight0  \tab\tab\tab\tab  \highlight5 credit_card, other\highlight0\par
+\par
+\highlight1 addrZip\highlight0\tab - \highlight3 String \highlight0 - Nullable - \highlight5 The first 3 numbers of the ZIP code provided by the borrower in \highlight0\tab\tab\tab       \highlight5 the loan application.\highlight0\par
+\par
+\highlight1 addrState\highlight0  - \highlight3 String \highlight0 - Nullable - \highlight5 The address state provided by the borrower during loan\highlight0  \tab\tab\tab\tab            \highlight5 application\highlight0\par
+\par
+\highlight1 investorCount \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The Number of investor members who have purchased \highlight0\tab\tab\tab\tab        \highlight5 notes from this loan\highlight0\par
+\par
+\highlight1 ilsExpD \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 The date and time when the loan will no longer be in the initial \highlight0\tab\tab\tab        \highlight5 listing status. After this date is past, the initialListStatus \highlight0\tab\tab\tab\tab        \highlight5 below will not have any effect and the loan will be treated \highlight0\tab\tab\tab\tab        \highlight5 as a FRACTIONAL loan.\highlight0\par
+\par
+\highlight1 initialListStatus \highlight0 - \highlight3 String \highlight0 - Not Nullable - \highlight5 The initial listing status of the loan. Possible values \highlight0\tab\tab\tab\tab\tab\highlight5 are W, F.\highlight0\par
+\par
+\highlight1 empTitle \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 Employment title\highlight0\par
+\par
+\highlight1 accNowDelinq\highlight0  - \highlight3 Integer \highlight0 - Nullable - \highlight5 The Number of accounts on which the borrower is now \highlight0\tab\tab\tab\tab        \highlight5 delinquent.\par
+\par
+\highlight1 accOpenPast24Mths \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of trades opened in past 24 months.\par
+\highlight0\par
+\highlight1 bcOpenToBuy \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total open to buy on revolving bankcards\highlight0 .\par
+\par
+\highlight1 percentBcGt75  \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Percentage of all bankcard accounts > 75% of limit.\highlight0\par
+\par
+\highlight1 bcUtil \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Ratio of total current balance to high credit/credit limit for all \highlight0\tab\tab\tab         \highlight5 bankcard accounts.\par
+\highlight0\par
+\highlight1 dti \highlight0 - \highlight3 Number \highlight0 - Nullable  - \highlight5 The borrower's debt to income ratio, calculated using the monthly \highlight0\tab\tab\tab   \highlight5 payments on the total debt obligations, excluding mortgage,  \highlight0\tab\tab\tab\tab   \highlight5 divided by self-reported monthly income.\par
+\highlight0\par
+\highlight1 delinq2Yrs \highlight0 - \highlight3 Integer \highlight0 - Nullable  - \highlight5 The Number of 30+ days past-due incidences of delinquency \highlight0\tab\tab\tab\tab\highlight5 in the borrower's credit file for the past 2 years.\par
+\highlight0\par
+\highlight1 delinqAmnt \highlight0 - \highlight3 Number \highlight0 - Nullable  - \highlight5 The past-due amount owed for the accounts on which the \highlight0\tab\tab\tab\tab     \highlight5 borrower is now delinquent.\highlight0\par
+\par
+\highlight1 earliestCrLine \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 The date the borrower's earliest reported credit line was \highlight0\tab\tab\tab\tab     \highlight5 opened\highlight0\par
+\par
+\highlight1 ficoRangeLow \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The lower boundary of range the borrower's FICO\highlight0  \tab\tab\tab\tab\tab        \highlight5 belongs to.\highlight0\par
+\par
+\highlight1 ficoRangeHigh \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The upper boundary of range the borrower's FICO \highlight0\tab\tab\tab\tab\tab         \highlight5 belongs to.\highlight0\par
+\par
+\highlight1 inqLast6Mths \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The Number of inquiries by creditors during the past 6\highlight0  \tab\tab\tab\tab       \highlight5 months.\par
+\highlight0\par
+\highlight1 mthsSinceLastDelinq \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The Number of months since the borrower's last \highlight0\tab\tab\tab\tab\tab      \highlight5 delinquency.\highlight0\par
+\par
+\highlight1 mthsSinceLastRecord \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The Number of months since the last public \highlight0\tab\tab\tab\tab\tab\tab       \highlight5 record.\par
+\highlight0\par
+\highlight1 mthsSinceRecentInq \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent inquiry.\highlight0\par
+\par
+\highlight1 mthsSinceRecentRevolDelinq \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent revolving \highlight0\tab\tab\tab\tab\tab\tab\tab       \highlight5 delinquency.\par
+\highlight0\par
+\highlight1 mthsSinceRecentBc \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent bankcard account \highlight0\tab\tab\tab\tab\tab\tab     \highlight5 opened.\par
+\highlight0\par
+\highlight1 mortAcc \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of mortgage accounts.\par
+\highlight0\par
+\highlight1 openAcc \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The Number of open credit lines in the borrower's credit file.\par
+\highlight0\par
+\highlight1 pubRec \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of derogatory public records.\par
+\highlight0\par
+\highlight1 totalBalExMort \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total credit balance excluding mortgage.\par
+\highlight0\par
+\highlight1 revolBal \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Total credit revolving balance.\par
+\highlight0\par
+\highlight1 revolUtil \highlight0 - \highlight3 Number \highlight0 -  Nullable - \highlight5 Revolving line utilization rate, or the amount of credit the \highlight0\tab\tab\tab\tab  \highlight5 borrower is using relative to all available revolving credit.\par
+\highlight0\par
+\highlight1 totalBcLimit \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total bankcard high credit/credit limit.\par
+\highlight0\par
+\highlight1 totalAcc \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 The total Number of credit lines currently in the borrower's \highlight0\tab\tab                          \highlight5 credit file\par
+\highlight0\par
+\highlight1 totalIlHighCreditLimit \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total installment high credit/credit limit\par
+\highlight0\par
+\highlight1 numRevAccts \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of revolving accounts\par
+\highlight0\par
+\highlight1 mthsSinceRecentBcDlq \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent bankcard \highlight0\tab\tab\tab\tab\tab      \tab           \highlight5 delinquency.\par
+\highlight0\par
+\highlight1 pubRecBankruptcies \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of public record bankruptcies.\par
+\par
+\highlight1 numAcctsEver120Ppd \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of accounts ever 120 or more days past \highlight0\tab\tab\tab\tab\tab        \highlight5 due.\par
+\highlight0\par
+\highlight1 chargeoffWithin12Mths \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of charge-offs within 12 months.\par
+\highlight0\par
+\highlight1 collections12MthsExMed \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of collections in 12 months excluding \highlight0\tab\tab\tab\tab\tab            \highlight5 medical collections.\par
+\highlight0\par
+\highlight1 taxLiens \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of tax liens\par
+\highlight0\par
+\highlight1 mthsSinceLastMajorDerog \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent 90-day or worse \highlight0\tab\tab\tab\tab\tab\tab  \highlight5  rating.\highlight0\par
+\par
+\highlight1 numSats \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of satisfactory accounts\par
+\highlight0\par
+\highlight1 numTlOpPast12m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of accounts opened in past 12 months\par
+\highlight0\par
+\highlight1 moSinRcntTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent account opened\par
+\highlight0\par
+\highlight1 totHiCredLim \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total high credit/credit limit\par
+\par
+\highlight1 totCurBal \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total current balance of all accounts\par
+\highlight0\par
+\highlight1 avgCurBal \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Average current balance of all accounts\par
+\highlight0\par
+\highlight1 numBcTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of bankcard accounts\par
+\highlight0\par
+\highlight1 numActvBcTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of currently active bankcard accounts\par
+\highlight0\par
+\highlight1 numBcSats \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of satisfactory bankcard accounts\par
+\highlight0\par
+\highlight1 pctTlNvrDlq \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Percent of trades never delinquent\par
+\highlight0\par
+\highlight1 numTl90gDpd24m \highlight0 - \highlight3 Integer \highlight0 - Nullable -  \highlight5 Number of accounts 90 or more days past due in\highlight0  \tab\tab\tab\tab\tab   \highlight5 last 24 months\par
+\par
+\highlight1 numTl30dpd \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of accounts currently 30 days past due (updated \highlight0\tab\tab\tab\tab      \highlight5 in past 2 months)\par
+\par
+\highlight1 numTl120dpd2m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of accounts currently 120 days past due \highlight0\tab\tab\tab\tab\tab             \highlight5 (updated in past 2 months)\par
+\par
+\highlight1 numIlTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of installment accounts\par
+\par
+\highlight1 moSinOldIlAcct \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since oldest installment account opened\par
+\highlight0\par
+\highlight1 numActvRevTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of currently active revolving trades\par
+\highlight0\par
+\highlight1 moSinOldRevTlOp \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since oldest revolving account opened\par
+\highlight0\par
+\highlight1 moSinRcntRevTlOp \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent revolving account\highlight0  \tab\tab\tab\tab\tab\tab    \highlight5 opened\par
+\highlight0\par
+\highlight1 totalRevHiLim \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total revolving high credit/credit limit\par
+\highlight0\par
+\highlight1 numRevTlBalGt0 \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of revolving trades with balance > 0\par
+\highlight0\par
+\highlight1 numOpRevTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of open revolving accounts\par
+\highlight0\par
+\highlight1 totCollAmt \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Total collection amounts ever owed\par
+\highlight0\par
+\highlight1 fundedAmount \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 The total amount funded by investors for that loan at\highlight0  \tab\tab\tab\tab            \highlight5 that point in time.\par
+\highlight0\par
+\highlight1 loanAmount \highlight0 - \highlight3 Number \highlight0 - Not Nullable - \highlight5 The listed amount of the loan applied for by the\highlight0  \tab\tab\tab\tab\tab              \highlight5 borrower. If at some point in time, the credit \highlight0\tab\tab\tab\tab\tab  \tab\highlight5 department reduces the loan amount, then it will \highlight0\tab\tab\tab\tab\tab\highlight5 be reflected in this value.\par
+\highlight0\par
+\highlight1 applicationType\highlight0\tab  - \highlight3 String \highlight0 - Nullable - \highlight5 The loan application type. Valid values are "INDIVIDUAL" \highlight0\tab\tab\tab\tab        \highlight5 or "JOINT".\par
+\par
+\highlight1 disbursementMethod\highlight0\tab - \highlight3 String \highlight0 - Not Nullable - \highlight5 It will indicate the loan disbursement \highlight0\tab\tab\tab\tab\tab\tab\tab\highlight5 method. Valid values are "DIRECT_PAY" or \highlight0\tab\tab\tab\tab\tab\tab\highlight5 "CASH".\par
+\par
+\highlight1 annualIncJoint \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 The joint annual income if the applicationType is \highlight0\tab\tab\tab\tab\tab           \highlight5 "JOINT".\par
+\highlight0\par
+\highlight1 dtiJoint \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 The joint debt to joint income ratio. This field is populated if \highlight0\tab\tab\tab             \highlight5 the applicationType is "JOINT". Calculated using the monthly\highlight0  \tab\tab\tab             \highlight5 payments on the total debt obligations, excluding mortgage, \highlight0                        \tab\tab\tab             \highlight5 divided by self-reported monthly income.\par
+\par
+\highlight1 isIncVJoint \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 Indicates if joint income is verified by LC. Valid values are \highlight0\tab\tab\tab\tab            \highlight5 NOT_VERIFIED,SOURCE_VERIFIED and VERIFIED.\par
+\highlight0\par
+\highlight1 openAcc6m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of open trades in last 6 months.\par
+\highlight0\par
+\highlight1 openIl6m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of currently active installment trades.\par
+\highlight0\par
+\highlight1 openActIl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of currently active installment trades. This field is a\highlight0  \tab\tab\tab              \highlight5 replacement field for openIl6m\par
+\highlight0\par
+\highlight1 openIl12m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of installment accounts opened in past 12 months.\par
+\highlight0\par
+\highlight1 openIl24m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of installment accounts opened in past 24 months.\par
+\highlight0\par
+\highlight1 mthsSinceRcntIl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent installment accounts \highlight0\tab\tab\tab\tab\tab            \highlight5 opened.\par
+\highlight0\par
+\highlight1 totalBalIl \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Total current balance of all installment accounts.\par
+\highlight0\par
+\highlight1 iLUtil \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Ratio of total current balance to high credit/credit limit on all \highlight0\tab\tab\tab        \highlight5 install acct.\par
+\par
+\highlight1 openRv12m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of revolving trades opened in past 12 months.\par
+\par
+\highlight1 openRv24m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of revolving trades opened in past 24 months.\par
+\highlight0\par
+\highlight1 maxBalBc \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Maximum current balance owed on all revolving accounts.\par
+\highlight0\par
+\highlight1 allUtil \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Balance to credit limit on all trades.\par
+\highlight0\par
+\highlight1 inqFi \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of personal finance inquiries.\par
+\highlight0\par
+\highlight1 totalCuTl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of credit union trades.\par
+\highlight0\par
+\highlight1 inqLast12m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of credit inquiries in past 12 months.\par
+\highlight0\par
+\highlight1 mtgPayment \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Monthly mortgage amount.\par
+\highlight0\par
+\highlight1 housingPayment \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Borrower stated housing payment on loan \highlight0\tab\tab\tab\tab\tab\tab\highlight5 application.\par
+\highlight0\par
+\highlight1 revolBalJoint \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Sum of revolving credit balance of the co-borrowers, net \highlight0\tab\tab\tab\tab      \highlight5 of duplicate balances.\par
+\highlight0\par
+\highlight1 secAppFicoRangeLow \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 FICO range (low) for the secondary applicant.\par
+\highlight0\par
+\highlight1 secAppFicoRangeHigh \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 FICO range (high) for the secondary applicant.\par
+\par
+\highlight1 secAppEarliestCrLine \highlight0 - \highlight3 String \highlight0 - Nullable - \highlight5 Earliest credit line at time of application for the \highlight0\tab\tab\tab\tab\tab     \highlight5 secondary applicant.\par
+\par
+\highlight1 secAppInqLast6Mths \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Credit inquiries in the last 6 months at time of \highlight0\tab\tab\tab\tab\tab      \highlight5 application for the secondary applicant.\par
+\par
+\highlight1 secAppMortAcc \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of mortgage accounts at time of application\highlight0  \tab\tab\tab\tab           \highlight5 for the secondary applicant.\par
+\highlight0\par
+\highlight1 secAppOpenAcc \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of open trades at time of application for the\highlight0  \tab\tab\tab\tab             \highlight5 secondary applicant.\par
+\highlight0\par
+\highlight1 secAppRevolUtil \highlight0 - \highlight3 Number \highlight0 - Nullable - \highlight5 Ratio of total current balance to high credit/credit \highlight0\tab\tab\tab\tab\tab\highlight5 limit for all revolving accounts.\par
+\highlight0\par
+\highlight1 secAppOpenIl6m \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of currently active installment trades at time \highlight0\tab\tab\tab\tab            \highlight5 of application for the secondary applicant.\par
+\highlight0\par
+\highlight1 secAppOpenActIl \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of currently active installment trades at time \highlight0\tab\tab\tab\tab            \highlight5 of application for the secondary applicant. This field is \highlight0\tab\tab\tab\tab            \highlight5 a replacement field for secAppOpenIl6m\par
+\highlight0\par
+\highlight1 secAppNumRevAccts \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of revolving accounts at time of \highlight0\tab\tab\tab\tab\tab\tab       \highlight5 application for the secondary applicant.\highlight0\tab  \par
+\par
+\highlight1 secAppChargeoffWithin12Mths \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of charge-offs within last 12 \highlight0\tab\tab\tab\tab\tab\tab            \highlight5 months at time of application for the\highlight0  \tab\tab\tab\tab\tab\tab            \highlight5 secondary applicant.\par
+\highlight0\par
+\highlight1 secAppCollections12MthsExMed \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Number of collections within last 12 \highlight0\tab\tab\tab\tab\tab\tab              \highlight5 months excluding medical \highlight0\tab\tab\tab\tab\tab\tab\tab              \highlight5 collections at time of application for \highlight0\tab\tab\tab\tab\tab\tab              \highlight5 the secondary applicant.\par
+\par
+\highlight1 secAppMthsSinceLastMajorDerog \highlight0 - \highlight3 Integer \highlight0 - Nullable - \highlight5 Months since most recent 90-day or \highlight0\tab\tab\tab\tab\tab\tab\tab\highlight5 worse rating at time of application \highlight0\tab\tab\tab\tab\tab\tab\tab\highlight5 for the secondary applicant.\par
+}
+ 
