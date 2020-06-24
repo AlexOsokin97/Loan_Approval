@@ -26,10 +26,31 @@ u = pd.DataFrame(u)
 
 head = df.head()
 
-s = df['term'].unique()
+s = df['loan_amnt'].unique()
 
 
-s.sizes
+len(s)
+
+
+def get_column_values(data, columns, threshold):
+    col_vals = {}
+    for col in columns:
+        num_uniq = data[col].unique()
+        if len(num_uniq) <= threshold:
+            col_vals[col] = data[col].unique()
+        else:
+            continue
+        
+    return col_vals
+
+
+dic = get_column_values(df, df.columns, 1000000)
+disc = pd.DataFrame(dic)
+
+t = np.dtype(df['term'])
+
+if t == 'O':
+    print('ok')
 
 
 
