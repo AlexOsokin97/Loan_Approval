@@ -1,2 +1,2 @@
-# US_loan_length
-Using Data Science to predict how long would it take you to fully pay a loan in the United States
+# Loan_Approval
+Using Data Science to predict whether your loan would be approved or not in the US
