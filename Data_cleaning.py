@@ -92,49 +92,74 @@ df['LoanAmount'] = df.apply(lambda x: ungraduated_mean if x['Education']=='Not G
 
 df_nans = get_nans(df)
 
-#### ----> ['LoanAmount_Term'] replacing nans with median
+#### ----> ['LoanAmount_Term'] 
+# I decided to create  a loan term dictionary because the loan term is affected by the loan amount that was taken and by the income of 
+#the applicant/applicant + co applicant. The reason they both/each affect the loan term is because if loan amount is bigger then loan term would be longer
+#while if the loan amount is smaller then loan term would be shorter. In addition, if income is larger then loan term would be shorter while if income
+#is smaller then loan term would be longer. 
 
-loan_term_dic ={'480months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 480].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 480] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 480]).mean()),
-                   
-               '360months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 360].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 360] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 360]).mean()),
-                                     
-               '300months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 300].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 300] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 300]).mean()),
-                   
-               '240months LoanAmount& Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 240].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 240] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 240]).mean()),
-                   
-               '180months LoanAmount& Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 180].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 180] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 180]).mean()),
-                                     
-               '120months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 120].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 120] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 120]).mean()),
-                                     
-               '084months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 84].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 84] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 84]).mean()),
-                                     
-               '060months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 60].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 60] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 60]).mean()),
-                                     
-               '036months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 36].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 36] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 36]).mean()),
-                                     
-               '012months LoanAmount & Avg.Income': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 12].mean(),
-                    (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 12] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 12]).mean())}
+#To conclude, although there are not too many missing loan terms (2%) I still need to replace them with respect to the loan amount taken and the 
+#borrower's income to get accurate replacement
 
+loan_term_dic ={'Avg. LoanAmount': 
+                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 480].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 360].mean(), 
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 300].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 240].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 180].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 120].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 84].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 60].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 36].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 12].mean()),
+                   
+                'Avg. Income':
+                     ((df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 480] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 480]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 360] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 360]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 300] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 300]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 240] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 240]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 180] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 180]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 120] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 120]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 84] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 84]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 60] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 60]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 36] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 36]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 12] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 12]).mean()),
+                     
+                'Loan_Term_Months': ('480 months', '360 months', '300 months', '240 months', '180 months', 
+                                     '120 months', '84 months', '60 months', '36 months', '12 months') }
+                    
+loan_term_dic = pd.DataFrame(loan_term_dic)
+                  
+loan_term_nans = df.loc[pd.isnull(df['Loan_Amount_Term'])]
 
+indxes = [19,36,44,45,73,112,165,197,223,232,335,367,421,423]
+months = [18, 36, 24, 24, 24, 84 , 180 , 84, 180, 84, 12, 60, 120, 36]
+
+def fill_loanTerm(data, col, indx, values):
+    j = 0
+    for i in indx:
+        data[col].iloc[i] = values[j]
+        j += 1
+    return data
+
+df = fill_loanTerm(df, 'Loan_Amount_Term', indxes, months)
+
+df_nans = get_nans(df)
+
+#### ----> ['Credit_History'] replacing nans with mode
+
+credit_history_mode = df['Credit_History'].mode().iloc[0]
+
+df['Credit_History'].fillna(credit_history_mode, inplace=True)
+
+df_nans = get_nans(df)
+
+#### ----> creating a new column that shows if a loan was taking by a single borrower or by a couple of people
+
+df['Num_of_Borrowers'] = df.apply(lambda x: 2 if x['CoapplicantIncome'] != 0 else 1, axis=1)
+df = df[['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'Num_of_Borrowers',
+         'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area', 'Loan_Status']]
+cols = get_cols(df)
+data_dtype = get_dtypes(df, cols)
+
+#### ----> changing cols data type
+
+df.iloc[:, [0, 1, 2, 3, 4, 11, 12]] = df.iloc[:, [0, 1, 2, 3, 4, 11, 12]].astype('category')
 
 
 
