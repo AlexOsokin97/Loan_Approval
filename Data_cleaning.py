@@ -39,7 +39,9 @@ def get_copy(data):
     copy = data.copy()
     return copy
 
-data = import_data('train_ctrUa4K.csv')
+data_train = import_data('train_ctrUa4K.csv')
+data_test = import_data('test_lAUu6dG.csv')
+data = pd.concat([data_train, data_test], axis=0, ignore_index=True)
 nans = get_nans(data)
 cols = get_cols(data)
 vals = get_values(data, cols)
@@ -102,15 +104,17 @@ df_nans = get_nans(df)
 #borrower's income to get accurate replacement
 
 loan_term_dic ={'Avg. LoanAmount': 
-                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 480].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 360].mean(), 
-                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 300].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 240].mean(),
-                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 180].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 120].mean(),
-                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 84].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 60].mean(),
-                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 36].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 12].mean()),
+                   (df['LoanAmount'].loc[df['Loan_Amount_Term'] == 480].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 360].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 350].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 300].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 240].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 180].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 120].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 84].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 60].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 36].mean(),
+                   df['LoanAmount'].loc[df['Loan_Amount_Term'] == 12].mean(), df['LoanAmount'].loc[df['Loan_Amount_Term'] == 6].mean()),
                    
                 'Avg. Income':
                      ((df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 480] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 480]).mean(),
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 360] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 360]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 350] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 350]).mean(),
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 300] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 300]).mean(),
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 240] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 240]).mean(),
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 180] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 180]).mean(),
@@ -118,17 +122,18 @@ loan_term_dic ={'Avg. LoanAmount':
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 84] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 84]).mean(),
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 60] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 60]).mean(),
                      (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 36] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 36]).mean(),
-                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 12] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 12]).mean()),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 12] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 12]).mean(),
+                     (df['ApplicantIncome'].loc[df['Loan_Amount_Term'] == 6] + df['CoapplicantIncome'].loc[df['Loan_Amount_Term'] == 6]).mean()),
                      
-                'Loan_Term_Months': ('480 months', '360 months', '300 months', '240 months', '180 months', 
-                                     '120 months', '84 months', '60 months', '36 months', '12 months') }
+                'Loan_Term_Months': ('480 months', '360 months','350 months', '300 months', '240 months', '180 months', 
+                                     '120 months', '84 months', '60 months', '36 months', '12 months', '6 months') }
                     
 loan_term_dic = pd.DataFrame(loan_term_dic)
                   
 loan_term_nans = df.loc[pd.isnull(df['Loan_Amount_Term'])]
 
-indxes = [19,36,44,45,73,112,165,197,223,232,335,367,421,423]
-months = [18, 36, 24, 24, 24, 84 , 180 , 84, 180, 84, 12, 60, 120, 36]
+indxes = [19,36,44,45,73,112,165,197,223,232,335,367,421,423, 659, 662, 731, 743, 798, 828]
+months = [60, 84, 36, 36, 36, 180, 240, 60, 300, 36, 24, 60, 180, 84, 60, 240, 120, 84, 240, 60]
 
 def fill_loanTerm(data, col, indx, values):
     j = 0
@@ -137,37 +142,41 @@ def fill_loanTerm(data, col, indx, values):
         j += 1
     return data
 
-df = fill_loanTerm(df, 'Loan_Amount_Term', indxes, months)
+df1 = fill_loanTerm(df, 'Loan_Amount_Term', indxes, months)
 
-df_nans = get_nans(df)
+df_nans = get_nans(df1)
 
 #### ----> ['Credit_History'] replacing nans with mode
 
-credit_history_mode = df['Credit_History'].mode().iloc[0]
+credit_history_mode = df1['Credit_History'].mode().iloc[0]
 
-df['Credit_History'].fillna(credit_history_mode, inplace=True)
+df1['Credit_History'].fillna(credit_history_mode, inplace=True)
 
-df_nans = get_nans(df)
+df_nans = get_nans(df1)
 
 #### ----> creating a new column that shows if a loan was taking by a single borrower or by a couple of people
 
-df['Num_of_Borrowers'] = df.apply(lambda x: 2 if x['CoapplicantIncome'] != 0 else 1, axis=1)
-df = df[['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'Num_of_Borrowers',
+df1['Num_of_Borrowers'] = df1.apply(lambda x: 2 if x['CoapplicantIncome'] != 0 else 1, axis=1)
+df1 = df1[['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'Num_of_Borrowers',
          'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area', 'Loan_Status']]
-cols = get_cols(df)
-data_dtype = get_dtypes(df, cols)
+cols = get_cols(df1)
+data_dtype = get_dtypes(df1, cols)
 
 #### ----> changing cols data type
 
-df.iloc[:, [0, 1, 2, 3, 4, 11, 12]] = df.iloc[:, [0, 1, 2, 3, 4, 11, 12]].astype('category')
+df1.iloc[:, [0, 1, 2, 3, 4, 11, 12]] = df1.iloc[:, [0, 1, 2, 3, 4, 11, 12]].astype('category')
 
+#### ----> creating and saving new datasets
 
+df1.to_csv('Data_EDA.csv')
 
+datas = np.split(df1, [614])
 
+train = datas[0]
+test = datas[1]
 
-
-
-
+train.to_csv('train.csv')
+test.to_csv('test.csv')
 
 
 
