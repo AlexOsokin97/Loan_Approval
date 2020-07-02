@@ -29,7 +29,7 @@ from sklearn.model_selection import train_test_split, cross_val_score, GridSearc
 from xgboost import XGBClassifier
 from sklearn.ensemble import RandomForestClassifier,GradientBoostingClassifier
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, plot_confusion_matrix
 import pickle
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=35)
@@ -53,9 +53,10 @@ def model_performance(model,test_features, test_label):
         y_pred = model.predict(test_features)
         f1 = f1_score(y_true=test_label, y_pred=y_pred, average='binary')
         accuracy = accuracy_score(y_true=test_label, y_pred=y_pred)
+        conf = plot_confusion_matrix(model, test_features, test_label)
         return f1, accuracy
 
-
+####################################################################################################
 rfc = RandomForestClassifier()
 
 rfc_val_score = cross_validation(rfc, X_train, y_train, 'accuracy', 5)
@@ -68,8 +69,13 @@ rfc_best_model, rfc_best_score = grid_search(rfc, X_train, y_train, rfc_params, 
 
 rfc_f1_score, rfc_pred_accuracy = model_performance(rfc_best_model, X_test, y_test)
 
+####################################################################################################
 
+xg = XGBClassifier()
 
+xg_val_score = cross_validation(xg, X_train, y_train, 'accuracy', 5)
+
+xg_params = [{'max_depth':(2,4,6), 'learning_rate':(0.001,0.01,0.1), 'n_estimators': range(50,200,50), }]
 
 
 
