@@ -75,7 +75,19 @@ xg = XGBClassifier()
 
 xg_val_score = cross_validation(xg, X_train, y_train, 'accuracy', 5)
 
-xg_params = [{'max_depth':(2,4,6), 'learning_rate':(0.001,0.01,0.1), 'n_estimators': range(50,200,50), }]
+xg_params = [{'max_depth':(2,4,6), 'learning_rate':(0.001,0.01,0.1), 'n_estimators': range(50,200,50)}]
+
+xgb_best_model, xgb_best_score = grid_search(xg, X_train, y_train, xg_params, 'accuracy', 3)
+
+xg_f1_score, xg_pred_accuracy = model_performance(xgb_best_model, X_test, y_test)
+
+####################################################################################################
+
+gb = GradientBoostingClassifier()
+
+gb_val_score = cross_validation(gb, X_train, y_train, 'accuracy', 5)
+
+gb_params = [{''}]
 
 
 
