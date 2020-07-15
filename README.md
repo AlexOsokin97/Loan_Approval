@@ -102,10 +102,10 @@ Lower Bond = 3,500$
 * Accuracy: 84%
 * Precision: 81%
 
-##Conclusion
+## Conclusion
 ***All 4 algorithms had an outstanding performance. Each one of them scored above 80% accuracy and 80% precision. Firstly, the reason the algorithms weren't able to achieve a higher accuracy and precision might be because: 1. There was not enough data to train the algorithm on. 2. Not enough features which could have helped the algorithm to make a better predicition.<br/> 
 Secondly, I also chose the precision scoring metic because as a loan giver it is important for me that the model would have a high rate of correct predictions from all the predictions that it had made.<br/>
-As a result, if I were to choose 1 algorithm to put on production I would choose XGBoost classifier.
+As a result, if I were to choose 1 algorithm to put on production I would choose XGBoost classifier.***
 
 
 
