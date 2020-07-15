@@ -62,7 +62,7 @@ Lower Bond = 3,500$
 ***After studying and gaining information from those plots It was time to train and test my machine learning algorithms***
 
 ***I used the following scikit-learn packages for feature engineering, data scaling and data manipulation:***
-* **cross_val_score function:** I used this method because I wanted to check if my model's performance on the training data was not accidental. I checked it by splitting my training data to 10 folds of datasets where 1 of 10 folds was used as validation data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies. This method lowered the probability that the model's performance was accidental and also gave me a general idea of the quality of my dataset.
+* **cross_val_score function:** I used this method because I wanted to check if my model's performance on the training data was not accidental. I checked it by splitting my training data to 7 folds of datasets where 1 of 7 folds was used as validation data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies. This method lowered the probability that the model's performance was accidental and also gave me a general idea of the quality of my dataset.
 
 * **GridSearchCV:** I used this method for model's hyper parameter tuning. With this method I was able to get better classification results.
 
