@@ -76,16 +76,36 @@ Lower Bond = 3,500$
 
 ***After the data was feature engineered, split and ready to use, I used the following machine learning algorithms:***
 
-* **Random Forests Classifier:** A Decision Tree based algorithm which uses different non correlated random decision trees. Each tree uses different randomly selected features to make a prediction. For each observation in the data a selected amount of trees are grown and the most frequent prediction gets chosen. I chose this algorithm because I had a good amount of features, a case that is a good fit for this algorithm. In addition, It is very fast and most of the times has good performance. *It is also my personal favorite*.
+* **Random Forests Classifier:** A Decision Tree based algorithm which uses different non correlated random decision trees. Each tree uses different randomly selected features to make a prediction. For each observation in the data a selected amount of trees are grown and the most frequent prediction gets chosen. I chose this algorithm because I had a good amount of features, a case that is a good fit for this algorithm. In addition, It is very fast and most of the times has good performance. *It is also my personal favorite*. [https://www.youtube.com/watch?v=J4Wdy0Wc_xQ]
 
-* **XGBoost Classifier:**
+* **XGBoost Classifier:** XGBoost is a decision-tree-based ensemble Machine Learning algorithm that uses a gradient boosting framework. I chose this algorithm because it is fast, uses less computation resources and has many hyper-parameters that you can change which may lead to good results. [https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d]
 
-* **Support Vector Machine:**
+* **Support Vector Machine with RBF kernel:** The algorithm uses the help of hyperplanes to classify groups of data. I chose this algorithm because I removed outliers and scaled the data both of which have a negative effect on the outcome of the algorithm. In addition, it is very comfortable with high data dimensionality.
 
-* **Logistic Regression:**
+* **Logistic Regression:** A linear regression based algorithm which uses a sigmoid function to make a prediction. y with a value bigger than 0.5 will be classified as 1 and value less than 0.5 will be classified as 0. I chose this algorithm because it is very simple, it is easy to implement and it is a great choice for a binary classification problem. [https://www.youtube.com/watch?v=yIYKR4sgzI8]
 
+***Lastly, I trained the algorithms on the training set and evaluated their performance on the testing set:***
 
+#### Random Forest Classifier
+* Accuracy: 84%
+* Precision: 80%
 
+#### XGBoost Classifier
+* Accuracy: 83%
+* Precision: 82%
+
+#### SVM rbf
+* Accuracy: 84%
+* Precision: 81%
+
+#### Logistic Regression
+* Accuracy: 84%
+* Precision: 81%
+
+##Conclusion
+***All 4 algorithms had an outstanding performance. Each one of them scored above 80% accuracy and 80% precision. Firstly, the reason the algorithms weren't able to achieve a higher accuracy and precision might be because: 1. There was not enough data to train the algorithm on. 2. Not enough features which could have helped the algorithm to make a better predicition.<br/> 
+Secondly, I also chose the precision scoring metic because as a loan giver it is important for me that the model would have a high rate of correct predictions from all the predictions that it had made.<br/>
+As a result, if I were to choose 1 algorithm to put on production I would choose XGBoost classifier.
 
 
 
