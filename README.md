@@ -53,6 +53,26 @@ Lower Bond = 3,500$
 * *A loan for semi-urban property has 76.5% chance of approval with 23.5% chance of rejection. 38% of all loan applications were for semi-urban property*
 
 ## Machine Learning:
+***I did the following steps before beginning to implement machine learning techniques in order to make the process easier and maybe to gain more insights***
+
+* *I created 2 figure canvases. Each canvas can contain 4 plots. The first canvas I plotted 4 distribution plots for: Applicant Income, Co applicant income, Loan Amount and Loan Amount Term columns with values corresponding with Loan Status of type "Y" (Approved Loan). The same thing I did with Loan Status of type "N". The reason I did those plots was in order to see how the distribution of the data changes for each Loan Status type which helped me to gain more information.*
+
+* *I created 2 Heatmaps using the same technique of class splitting in order to see if maybe there are different column correlation for each Loan Status. Both of the Heatmaps were the same*
+
+***After studying and gaining information from those plots It was time to train and test my machine learning algorithms***
+
+***I used the following scikit-learn packages for feature engineering, data scaling and data manipulation:***
+* **cross_val_score function:** I used this method because I wanted to check if my model's performance on the training data was not accidental. I checked it by splitting my training data to 10 folds of datasets where 1 of 10 folds was used as validation data and fitting the model to each split variation. In the end I took the mean accuracy score of all the accuracies. This method lowered the probability that the model's performance was accidental and also gave me a general idea of the quality of my dataset.
+
+* **GridSearchCV:** I used this method for model's hyper parameter tuning. With this method I was able to get better classification results.
+
+* **train_test_split:** I used this technique in order to split my dataset into 2 fractions. The first largest fraction is the 'training set' which would include 80% of the whole dataset and the second smallest fraction is the 'testing set' which would include 20% from the whole dataset. I used this technique because I wanted to check how successful my models were by applying them on data they had never seen before.
+
+* **PCA (principal component analysis):** The PCA is a dimension reduction technique which transforms an M number of features into N number of components. This method makes the data less complex and as a result an algorithm may train faster and use less computation power. I chose 2 components because I did not have too much numerical features in my dataset and because it is the standard choice.
+
+* **OneHotEncoder, LabelEncoder & ColumnTransformer:** These packages transform categorical columns into numerical values. each value is then put in a binary column with 1 and 0 values that indicate whether a specific category is present in the observation or not.
+
+* 
 
 
 
