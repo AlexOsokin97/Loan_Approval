@@ -72,7 +72,17 @@ Lower Bond = 3,500$
 
 * **OneHotEncoder, LabelEncoder & ColumnTransformer:** These packages transform categorical columns into numerical values. each value is then put in a binary column with 1 and 0 values that indicate whether a specific category is present in the observation or not.
 
-* 
+* **Normilizer:** A scaling function for normal distributed data which scales values between 0 and 1. I used this method because I used IQR in order to remove outliers.
+
+***After the data was feature engineered, split and ready to use, I used the following machine learning algorithms:***
+
+* **Random Forests Classifier:** A Decision Tree based algorithm which uses different non correlated random decision trees. Each tree uses different randomly selected features to make a prediction. For each observation in the data a selected amount of trees are grown and the most frequent prediction gets chosen. I chose this algorithm because I had a good amount of features, a case that is a good fit for this algorithm. In addition, It is very fast and most of the times has good performance. *It is also my personal favorite*.
+
+* **XGBoost Classifier:**
+
+* **Support Vector Machine:**
+
+* **Logistic Regression:**
 
 
 
